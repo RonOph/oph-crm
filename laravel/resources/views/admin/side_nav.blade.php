@@ -13,10 +13,10 @@
                 <!-- /input-group -->
             </li>
             <li>
-                <a href="home"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                <a href="{{ URL::to('home') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
             <li>
-                <a href="clients"><i class="fa fa-user fa-fw"></i> Clients</a>
+                <a href="{{ route('clients.index') }}"><i class="fa fa-user fa-fw"></i> Clients</a>
             </li> 
             
         </ul>

@@ -18,5 +18,5 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::resource('clients','ClientController');
  
-Route::get('/clients','ClientsController@index');
