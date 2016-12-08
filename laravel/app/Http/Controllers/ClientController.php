@@ -65,7 +65,8 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        //
+        $client = Client::find($id);
+        return view('admin.client-show',['client'=>$client]);
     }
 
     /**
@@ -76,9 +77,8 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        //
         $client = Client::find($id);
-        echo $client->company_name;
+         return view('admin.client-edit', ['client'=>$client]);
     }
 
     /**
@@ -91,6 +91,16 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request,[
+            'company_name'=>'required|max:255',
+            'owner_name'=>'required',
+            'email'=>'required|email|unique:clients,email,'.$id,
+            'contact_number'=>'required|digits:11',
+            'website_url'=>'required|active_url'
+            ]);
+        Client::find($id)->update($request->all());
+        return redirect()->route('clients.index')->with('success','Your client updated successfully.');
+
     }
 
     /**

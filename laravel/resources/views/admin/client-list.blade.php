@@ -4,6 +4,7 @@
 
 @if($message = Session::get('success'))
 <div class="row">
+    <br/>
     <div class="alert-success">
         <p>{{ $message }}</p>
     </div>
@@ -23,11 +24,9 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 
-                 <div class="row"> 
-                    <div >
+                 <div class="row">  
                         <a href="{{ route('clients.create') }}" class="btn btn-default">Add New</a>
-                    </div>
-                </div>
+                 </div>
 
             </div>
             <!-- /.panel-heading -->
