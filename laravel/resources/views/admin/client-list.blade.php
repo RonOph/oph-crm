@@ -39,11 +39,11 @@
                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                             <thead>
                                 <tr>
+                                    <th>Logo</th>
                                     <th>Company Name</th>
                                     <th>Owner</th>
                                     <th>Email</th>
-                                    <th>contact</th>
-                                    <th>Website</th>
+                                    <th>Contract Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -52,11 +52,11 @@
                                
                                     @foreach($clients as $key => $client)
                                         <tr>
+                                            <td>{{ $client->logo }}</td>
                                             <td>{{ $client->company_name }}</td>
                                             <td>{{ $client->owner_name }}</td>
                                             <td>{{ $client->email }}</td>
-                                            <td>{{ $client->contact_number }}</td>
-                                            <td class="center">{{ $client->website_url }}</td>
+                                            <td class="center">{{ $client->contract_status }}</td>
                                              <td class="center">
                                                 <a class="btn btn-success" href="{{ route('clients.show', $client->id) }}">Show</a>
                                                 <a class="btn btn-primary" href="{{ route('clients.edit', $client->id) }}">Edit</a>   

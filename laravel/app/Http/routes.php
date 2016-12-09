@@ -19,4 +19,10 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 Route::resource('clients','ClientController');
+
+Route::get('upload',function(){
+	return view('admin.upload');
+});
+
+Route::post('apply/upload','ApplyController@upload');
  

@@ -1,6 +1,14 @@
 @extends('layouts.admin')
  
 @section('content')
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Edit</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
  
     <div class="row">
                 <div class="col-lg-12">
@@ -40,16 +48,33 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Contact Number</label>
-                                            <input class="form-control" name="contact_number" placeholder="Enter Contact Number" value="{{ $client->contact_number }}">
+                                            <label>Mobile Number</label>
+                                            <input class="form-control" name="mobile_number" placeholder="Enter Mobile Number" value="{{ $client->mobile_number }}">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Telephone Number</label>
+                                            <input class="form-control" name="telephone_number" placeholder="Enter Telephone Number" value="{{ $client->telephone_number }}">
                                         </div>
 
                                         <div class="form-group">
                                             <label>Website</label>
                                             <input class="form-control" name="website_url" placeholder="Enter Website URL" value="{{ $client->website_url }}">
                                         </div>
+
+                                        <div class="form-group">
+                                            <label>Contract Status</label>
+                                             {!! Form::select('contract_status',[''=>'','Pending'=>'Pending','Active'=>'Active','Inactive'=>'Inactive'],(empty($client) ? '' : $client->contract_status),['class'=>'form-control']) !!}
+
+                                        </div>
+
+                                         <div class="form-group">
+                                            <label>Note</label>
+                                            <textarea class="form-control" rows="3" name="note">{{ $client->note }}</textarea>
+                                        </div>
+
                                         <div class="form-actions">
-                                            <button type="submit" class="btn btn-default">Submit Button</button>
+                                            <button type="submit" class="btn btn-primary">Update</button>
                                             <button type="button" class="btn btn-default" onclick="Cancel()">Cancel</button>
                                         </div>
                                      {!! Form::close() !!}

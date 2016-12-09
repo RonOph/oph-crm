@@ -17,8 +17,7 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        
+    { 
         $clients = Client::orderBy('created_at','desc')->paginate(5);
         return view('admin.client-list',['clients'=>$clients]);
 
@@ -45,14 +44,27 @@ class ClientController extends Controller
     {
 
         $this->validate($request,[
+            'logo'=>'required|image|mimes:jpeg,png,jpg',
             'company_name'=>'required|max:255',
             'owner_name'=>'required',
             'email'=>'required|email|unique:clients',
-            'contact_number'=>'required|digits:11',
-            'website_url'=>'required|active_url'
-            ]);          
+            'mobile_number'=>'digits:11',
+            'website_url'=>'active_url',
+            'contract_status'=>'required|in:Pending,Active,Inactive'            
+            ]);
+         
+        $client = new Client($request->input());
 
-        Client::create($request->all());
+
+        if ($request->file('logo')->isValid()) {
+           $file = $request->file('logo');
+           $fileName = $file->getClientOriginalName();
+           $destinationPath = public_path().'/images/' ;
+           $request->file('logo')->move($destinationPath, $fileName);
+           $client->logo =  $fileName;
+        }
+
+        $client->save();
         return redirect()->route('clients.index')->with('success','Your client added successfully!');
 
     }

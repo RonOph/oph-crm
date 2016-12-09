@@ -1,6 +1,13 @@
 @extends('layouts.admin')
  
 @section('content')
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Add New</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
  
     <div class="row">
                 <div class="col-lg-12">
@@ -26,7 +33,13 @@
                                 <!-- /.col-lg-6 (nested) -->
                                 <div class="col-lg-6">
                                     
-                                     {{ Form::open(array('route' => 'clients.store','method'=>'POST')) }}
+                                     {{ Form::open(array('route' => 'clients.store','method'=>'POST','files'=>'true')) }}
+
+                                        <div class="form-group">
+                                            <label>Logo</label>
+                                            <input class="form-control" name="logo" type="file"> 
+                                        </div>
+
                                         <div class="form-group">
                                             <label>Company Name</label>
                                             <input class="form-control" name="company_name"  placeholder="Enter Company Name" value="{{ old('company_name') }}"> 
@@ -41,16 +54,32 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Contact Number</label>
-                                            <input class="form-control" name="contact_number" placeholder="Enter Contact Number" value="{{ old('contact_number') }}">
+                                            <label>Mobile Number</label>
+                                            <input class="form-control" name="mobile_number" placeholder="Enter Mobile Number" value="{{ old('mobile_number') }}">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Telephone Number</label>
+                                            <input class="form-control" name="telephone_number" placeholder="Enter Telephone Number" value="{{ old('telephone_number') }}">
                                         </div>
 
                                         <div class="form-group">
                                             <label>Website</label>
                                             <input class="form-control" name="website_url" placeholder="Enter Website URL" value="{{ old('website_url') }}">
                                         </div>
+
+                                        <div class="form-group">
+                                            <label>Contract Status</label>
+                                            {!! Form::select('contract_status',[''=>'','Pending'=>'Pending','Active'=>'Active','Inactive'=>'Inactive'],old('contract_status'),['class'=>'form-control']) !!}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Note</label>
+                                            <textarea class="form-control" rows="3" name="note">{{ old('note') }}</textarea>
+                                        </div>
+
                                         <div class="form-actions">
-                                            <button type="submit" class="btn btn-default">Submit Button</button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
                                             <button type="button" class="btn btn-default" onclick="Cancel()">Cancel</button>
                                         </div>
                                      {{ Form::close() }}
