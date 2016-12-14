@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Client;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
+use App\Http\Requests; 
 
-
+use Image;
 
 class ClientController extends Controller
 {
@@ -42,6 +42,7 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
+         
 
         $this->validate($request,[
             'logo'=>'required|image|mimes:jpeg,png,jpg',
@@ -50,18 +51,19 @@ class ClientController extends Controller
             'email'=>'required|email|unique:clients',
             'mobile_number'=>'digits:11',
             'website_url'=>'active_url',
-            'contract_status'=>'required|in:Pending,Active,Inactive'            
+            'status'=>'required|in:pending,active,inactive'            
             ]);
          
         $client = new Client($request->input());
 
-
         if ($request->file('logo')->isValid()) {
            $file = $request->file('logo');
-           $fileName = $file->getClientOriginalName();
-           $destinationPath = public_path().'/images/' ;
-           $request->file('logo')->move($destinationPath, $fileName);
+           $fileName = time().'.'.$file->getClientOriginalExtension();
+           $path = public_path('images/'.$fileName);
+           
+           Image::make($file->getRealPath())->resize(100,100)->save($path);
            $client->logo =  $fileName;
+
         }
 
         $client->save();
@@ -102,15 +104,33 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
         $this->validate($request,[
+            'logo'=>'image|mimes:jpeg,png,jpg',
             'company_name'=>'required|max:255',
             'owner_name'=>'required',
             'email'=>'required|email|unique:clients,email,'.$id,
-            'contact_number'=>'required|digits:11',
-            'website_url'=>'required|active_url'
+            'mobile_number'=>'digits:11',
+            'website_url'=>'active_url',
+            'status'=>'required|in:pending,active,inactive'  
             ]);
+
         Client::find($id)->update($request->all());
+
+        if($request->hasFile('logo')){
+
+            if($request->file('logo')->isValid()){
+
+                $file = $request->file('logo');
+                $fileName = time().'.'.$file->getClientOriginalExtension();
+                $path = public_path('images/'.$fileName);
+                Image::make($file->getRealPath())->resize(100,100)->save($path);
+                Client::where('id','=',$id)->update(['logo'=>$fileName]);
+ 
+            }
+        }
+
+
         return redirect()->route('clients.index')->with('success','Your client updated successfully.');
 
     }

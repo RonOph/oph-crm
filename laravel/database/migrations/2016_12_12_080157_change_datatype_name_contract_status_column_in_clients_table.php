@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeDatatypeContractStatusColumnInClientsTable extends Migration
+class ChangeDatatypeNameContractStatusColumnInClientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,8 @@ class ChangeDatatypeContractStatusColumnInClientsTable extends Migration
     public function up()
     {
         Schema::table('clients', function (Blueprint $table) {
-            $table->smallInteger('contract_status')->change();
+            //
+            $table->renameColumn("contract_status","status");
         });
     }
 
@@ -25,7 +26,8 @@ class ChangeDatatypeContractStatusColumnInClientsTable extends Migration
     public function down()
     {
         Schema::table('clients', function (Blueprint $table) {
-            $table->string('contract_status')->change();
+            //
+            $table->renameColumn("status","contract_status");
         });
     }
 }

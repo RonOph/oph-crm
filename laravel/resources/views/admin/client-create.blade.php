@@ -33,7 +33,7 @@
                                 <!-- /.col-lg-6 (nested) -->
                                 <div class="col-lg-6">
                                     
-                                     {{ Form::open(array('route' => 'clients.store','method'=>'POST','files'=>'true')) }}
+                                     {!! Form::open(array('route' => 'clients.store','method'=>'POST','files'=>'true')) !!}
 
                                         <div class="form-group">
                                             <label>Logo</label>
@@ -70,7 +70,9 @@
 
                                         <div class="form-group">
                                             <label>Contract Status</label>
-                                            {!! Form::select('contract_status',[''=>'','Pending'=>'Pending','Active'=>'Active','Inactive'=>'Inactive'],old('contract_status'),['class'=>'form-control']) !!}
+                                             {!! Form::select('status',[''=>'','pending'=>'Pending','active'=>'Active','inactive'=>'Inactive'], old('status') ,['class'=>'form-control']) !!}
+
+
                                         </div>
 
                                         <div class="form-group">
@@ -82,7 +84,7 @@
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                             <button type="button" class="btn btn-default" onclick="Cancel()">Cancel</button>
                                         </div>
-                                     {{ Form::close() }}
+                                     {!! Form::close() !!}
                                      
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->

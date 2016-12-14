@@ -1,6 +1,14 @@
 @extends('layouts.admin')
  
 @section('content')
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header"></h1>
+    </div>
+</div>
+
  
     <div class="row">
                 <div class="col-lg-12">
@@ -15,7 +23,11 @@
                                 
                                 <!-- /.col-lg-6 (nested) -->
                                 <div class="col-lg-6">
-                                    
+                                        
+                                        <div class="form-group">
+                                            <img src="{{ asset('images/'.$client->logo) }}">
+                                        </div>
+
                                         <div class="form-group">
                                             <label>Company Name :</label>
                                              {{ $client->company_name }}
@@ -30,13 +42,25 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Contact Number :</label>
-                                              {{ $client->contact_number }}
+                                            <label>Mobile No. :</label>
+                                              {{ $client->mobile_number }}
                                         </div>
+                                        <div class="form-group">
+                                            <label>Telephone No. :</label>
+                                              {{ $client->telephone_number }}
+                                        </div> 
 
                                         <div class="form-group">
                                             <label>Website :</label>
                                               {{ $client->website_url }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Status :</label>
+                                              {{ ucwords($client->status) }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Note :</label>
+                                              {{ $client->note }}
                                         </div>
                                         <div class="form-actions">
                                              <button type="button" class="btn btn-default" onclick="Cancel()">Back</button>

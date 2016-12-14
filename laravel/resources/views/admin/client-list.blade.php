@@ -39,11 +39,11 @@
                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                             <thead>
                                 <tr>
-                                    <th>Logo</th>
+                                    <th class="text-center">Logo</th>
                                     <th>Company Name</th>
                                     <th>Owner</th>
                                     <th>Email</th>
-                                    <th>Contract Status</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -52,16 +52,16 @@
                                
                                     @foreach($clients as $key => $client)
                                         <tr>
-                                            <td>{{ $client->logo }}</td>
+                                            <td align="center"><img src="{{ asset('/images/'.$client->logo) }}" /></td>
                                             <td>{{ $client->company_name }}</td>
                                             <td>{{ $client->owner_name }}</td>
                                             <td>{{ $client->email }}</td>
-                                            <td class="center">{{ $client->contract_status }}</td>
+                                            <td class="center">{{ ucwords($client->status) }}</td>
                                              <td class="center">
                                                 <a class="btn btn-success" href="{{ route('clients.show', $client->id) }}">Show</a>
                                                 <a class="btn btn-primary" href="{{ route('clients.edit', $client->id) }}">Edit</a>   
                                                 {{ Form::open(['method'=>'DELETE','route'=>['clients.destroy',$client->id],'style'=>'display:inline;']) }}
-                                                {{ Form::submit('Delete',['class'=>'btn btn-danger']) }}
+                                                {{ Form::submit('Delete',['class'=>'btn btn-danger del']) }}
                                                 {{ Form::close() }}                                             
                                             </td>
 
@@ -87,4 +87,15 @@
     <!-- /.col-lg-12 -->
 </div>
 <!-- /.row -->
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $('.del').on('click',function(){
+            if(confirm('Are you sure you want to delete?')){
+                return true;
+            }
+            return false
+        })
+    })
+</script>
 @endsection

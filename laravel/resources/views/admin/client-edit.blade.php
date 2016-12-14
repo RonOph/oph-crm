@@ -5,7 +5,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Edit</h1>
+        <h1 class="page-header">Edit Client</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -33,11 +33,22 @@
                                 
                                 <!-- /.col-lg-6 (nested) -->
                                 <div class="col-lg-6">                                    
-                                     {!! Form::model($client, ['method'=>'PUT', 'route' => ['clients.update',$client->id]]) !!}
+                                     {!! Form::model($client, ['method'=>'PUT', 'route' => ['clients.update',$client->id], 'files'=>true]) !!}
+                                        
+                                        <div class="form-group">
+                                            <img src="{{ asset('images/'.$client->logo) }}">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Logo</label>
+                                            <input class="form-control" name="logo" type="file"> 
+                                        </div>
+
                                         <div class="form-group">
                                             <label>Company Name</label>
                                             <input class="form-control" name="company_name"  placeholder="Enter Company Name" value="{{ $client->company_name }}"> 
                                         </div>
+                                        
                                         <div class="form-group">
                                             <label>Owner Name</label>
                                             <input class="form-control" name="owner_name"  placeholder="Enter Owner Name" value="{{ $client->owner_name }}"> 
@@ -63,8 +74,8 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Contract Status</label>
-                                             {!! Form::select('contract_status',[''=>'','Pending'=>'Pending','Active'=>'Active','Inactive'=>'Inactive'],(empty($client) ? '' : $client->contract_status),['class'=>'form-control']) !!}
+                                            <label>Status</label>
+                                             {!! Form::select('status',[''=>'','pending'=>'Pending','active'=>'Active','inactive'=>'Inactive'],$client->status,['class'=>'form-control']) !!}
 
                                         </div>
 
@@ -74,7 +85,7 @@
                                         </div>
 
                                         <div class="form-actions">
-                                            <button type="submit" class="btn btn-primary">Update</button>
+                                            <button type="submit" class="btn btn-primary">Save</button>
                                             <button type="button" class="btn btn-default" onclick="Cancel()">Cancel</button>
                                         </div>
                                      {!! Form::close() !!}

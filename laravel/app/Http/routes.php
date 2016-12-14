@@ -25,4 +25,3 @@ Route::get('upload',function(){
 });
 
 Route::post('apply/upload','ApplyController@upload');
- 
