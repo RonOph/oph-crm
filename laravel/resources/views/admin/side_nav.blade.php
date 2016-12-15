@@ -13,11 +13,22 @@
                 <!-- /input-group -->
             </li>
             <li>
-                <a href="{{ URL::to('home') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                <a href="{{ URL::to('home') }}"><i class="fa fa-dashboard"></i> Dashboard</a>
             </li>
             <li>
-                <a href="{{ route('clients.index') }}"><i class="fa fa-user fa-fw"></i> Clients</a>
-            </li> 
+                <a href="{{ route('clients.index') }}"><i class="fa fa-users"></i> Clients</a>
+                <ul class="nav nav-second-level collapse in">
+                     <li><a href="{{ route('clients.index') }}"><i class="fa  fa-check "></i> Credentials</a></li>
+                     <li><a href="{{ route('clients.index') }}"><i class="fa  fa-th-list"></i> Projects</a></li>
+                     <li><a href="{{ route('clients.index') }}"><i class="fa fa-database"></i> Collections</a></li>
+                     <li><a href="{{ route('clients.index') }}"><i class="fa fa-folder-open-o"></i> Contracts</a></li>
+                </ul>
+            </li>
+            
+
+             <li><a href="{{ route('clients.index') }}"><i class="fa fa-user"></i> Users</a> </li> 
+              <li><a href="{{ route('clients.index') }}"><i class="fa fa-user-md"></i> User Roles</a>  </li> 
+             
             
         </ul>
     </div>
