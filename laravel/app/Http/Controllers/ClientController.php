@@ -11,16 +11,23 @@ use Image;
 
 class ClientController extends Controller
 {
+
+    public function __construct()
+    {
+
+        $this->middleware('auth');
+
+    }
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     { 
         $clients = Client::orderBy('created_at','desc')->paginate(5);
-        return view('admin.client-list',['clients'=>$clients]);
-
+        return view('admin.client-list',['clients'=>$clients])->with('i',($request->input('page',1) - 1) * 5);
     }
 
     /**
