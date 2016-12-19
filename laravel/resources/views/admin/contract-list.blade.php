@@ -13,7 +13,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Credentials</h1>
+        <h1 class="page-header">Contracts</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -25,7 +25,7 @@
             <div class="panel-heading">
                 
                  <div class="row">  
-                        <a href="{{ route('credentials.create') }}" class="btn btn-default">Add New</a>
+                        <a href="{{ route('contracts.create') }}" class="btn btn-default">Add New</a>
                  </div>
 
             </div>
@@ -39,28 +39,28 @@
                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                             <thead>
                                 <tr> 
+                                    <th class="text-center">Contract ID</th>
                                     <th>Client</th>
-                                    <th>Type</th>
-                                    <th>Username</th>
-                                    <th>Password</th>
-                                    <th>Link</th>                                   
+                                    <th>Name</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>                                   
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(count($credentials) > 0)
+                                @if(count($contracts) > 0)
                                
-                                    @foreach($credentials as $key => $credential)
+                                    @foreach($contracts as $key => $contract)
                                         <tr>
-                                            <td> {{ $credential->client->company_name }}</td>
-                                            <td>{{ $credential->type }}</td>
-                                            <td>{{ $credential->username }}</td>
-                                            <td>{{ $credential->password }}</td>
-                                            <td>{{ $credential->link }}</td>                                            
+                                            <td class="text-center">{{ $contract->official_contract_id }}</td>
+                                            <td>{{ $contract->client->company_name }}</td>
+                                            <td>{{ $contract->name }}</td>
+                                            <td>{{ $contract->start_date }}</td>
+                                            <td>{{ $contract->end_date }}</td>                                            
                                             <td>                                                
-                                                <a class="btn btn-success" href="{{ route('credentials.show', $credential->id) }}">Show</a>
-                                                <a class="btn btn-primary" href="{{ route('credentials.edit', $credential->id) }}">Edit</a>   
-                                                {{ Form::open(['method'=>'DELETE','route'=>['credentials.destroy',$credential->id],'style'=>'display:inline;']) }}
+                                                <a class="btn btn-success" href="{{ route('contracts.show', $contract->id) }}">Show</a>
+                                                <a class="btn btn-primary" href="{{ route('contracts.edit', $contract->id) }}">Edit</a>   
+                                                {{ Form::open(['method'=>'DELETE','route'=>['contracts.destroy',$contract->id],'style'=>'display:inline;']) }}
                                                 {{ Form::submit('Delete',['class'=>'btn btn-danger del']) }}
                                                 {{ Form::close() }} 
                                             </td>
@@ -68,13 +68,13 @@
                                     @endforeach
                                 @else
                                         <tr> 
-                                            <td class="center" colspan="6">No result found</td>
+                                            <td class="center" colspan="7">No result found</td>
                                         </tr>
                                 @endif                            
                             </tbody>
                         </table>
 
-                        {{ $credentials->render() }}
+                        {{ $contracts->render() }}
                     </div>
 
 

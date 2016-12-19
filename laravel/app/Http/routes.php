@@ -16,5 +16,7 @@ Route::get('/', 'HomeController@index');
 Route::auth();
 
 Route::resource('clients','ClientController');
+Route::resource('contracts','ContractController');
 Route::resource('credentials','CredentialController');
+
  

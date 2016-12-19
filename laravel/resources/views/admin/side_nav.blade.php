@@ -17,11 +17,12 @@
             </li>
             <li>
                 <a href="{{ route('clients.index') }}"><i class="fa fa-users"></i> Clients</a>
-                <ul class="nav nav-second-level collapse in">
-                     <li><a href="{{ route('credentials.index') }}"><i class="fa  fa-check "></i> Credentials</a></li>
+                <ul class="nav nav-second-level collapse in">                     
+                     <li><a href="{{ route('contracts.index') }}"><i class="fa fa-folder-open-o"></i> Contracts</a></li>
                      <li><a href="{{ route('clients.index') }}"><i class="fa  fa-th-list"></i> Projects</a></li>
                      <li><a href="{{ route('clients.index') }}"><i class="fa fa-database"></i> Collections</a></li>
-                     <li><a href="{{ route('clients.index') }}"><i class="fa fa-folder-open-o"></i> Contracts</a></li>
+                     <li><a href="{{ route('credentials.index') }}"><i class="fa  fa-check "></i> Credentials</a></li>
+                     
                 </ul>
             </li>
             
