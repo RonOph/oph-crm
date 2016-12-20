@@ -23,29 +23,38 @@
                                 <div class="col-lg-6">                                    
  
                                     <div class="form-group">
-                                        <label>Client :</label>
-                                        {{ $credential->client->company_name }}
-                                        
+                                        <label>Name :</label>
+                                        {{ $contract->name }} 
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Date Signed :</label>
+                                        {{ $contract->date_signed }} 
+                                    </div> 
+
+
+                                    <div class="form-group">
+                                        <label>Start Date :</label> 
+                                        {{ date('F d, Y',strtotime($contract->start_date)) }}
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Credential Type :</label>
-                                        {{ $credential->type }}
-                                         
-                                    </div>
-                                 
-                                    <div class="form-group">
-                                        <label>Link :</label>
-                                        {{ $credential->link }}
+                                        <label>End Date :</label> 
+                                        {{ date('F d, Y',strtotime($contract->end_date)) }}
                                     </div>
                                     <div class="form-group">
-                                        <label>Username :</label>
-                                        {{ $credential->username }}
+                                        <label>Total Amount :</label>
+                                        {{ number_format($contract->amount,2) }} 
                                     </div>
+
                                     <div class="form-group">
-                                        <label>Password :</label>
-                                        {{ $credential->password }}
-                                    </div>                                        
+                                        <label>Collection Schedule :</label> 
+                                        {{ $contract->collection_schedule }}
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Client :</label> 
+                                        {{ $contract->client->company_name }}
+                                    </div>                                      
 
                                     <div class="form-actions">
                                         <button type="button" class="btn btn-default" onclick="Cancel()">Back</button>
@@ -64,7 +73,7 @@
             </div>
             <script type="text/javascript">
                 function Cancel(){
-                    location.href="{{ route('credentials.index') }}"
+                    location.href="{{ route('contracts.index') }}"
                 }
 
             </script>

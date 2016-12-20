@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Add New</h1>
+        <h1 class="page-header">Edit</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -13,7 +13,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Contract
+                            User
                         </div>
                         <div class="panel-body">
 
@@ -33,54 +33,38 @@
                                 <!-- /.col-lg-6 (nested) -->
                                 <div class="col-lg-6">
                                     
-                                     {!! Form::open(array('route' => 'contracts.store','method'=>'POST')) !!}
-                                        
+                                     {!! Form::model($user, ['method'=>'PATCH','route'=>['users.update',$user->id]] ) !!}                                     
 
-                                        
                                         <div class="form-group">
                                             <label>Name</label>
-                                            <input class="form-control" name="name"  placeholder="Sample: Web Hosting and Development" value="{{ old('name') }}"> 
+                                            <input class="form-control" name="name"  placeholder="Enter name" value="{{ $user->name }}"> 
+                                        </div>                                         
+
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input type="email" class="form-control" name="email"  placeholder="Enter email" value="{{ $user->email }}"> 
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Date Signed</label> 
-                                            <input type='text' class="form-control" data-provide="datepicker" name="date_signed" id="datesigneddatepicker" value="{{ old('date_signed') }}" />
-                                        </div>     
-
-                                        <div class="form-group">
-                                            <label>Start Date</label> 
-                                            <input type='text' class="form-control" data-provide="datepicker" name="start_date" id="startdatepicker" />
+                                            <label>Password</label> 
+                                            <input type='password' class="form-control" name="password" />
                                         </div>
 
                                         <div class="form-group">
-                                            <label>End Date</label> 
-                                            <input type='text' class="form-control" data-provide="datepicker" name="end_date" id="enddatepicker" />
+                                            <label>Confirm Password</label> 
+                                            <input type='password' class="form-control" name="password_confirmation" />
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Total Amount</label>
-                                            <input class="form-control" name="amount"  placeholder="Enter amount" value="{{ old('amount') }}"> 
+                                            <label>Role</label> 
+                                            {!! Form::select('role_id',$roles, $user->role_id ,['class'=>'form-control']) !!}
                                         </div>
-
-                                        <div class="form-group">
-                                            <label>Collection Schedule</label> 
-                                            {!! Form::select('collection_schedule',['Monthly'=>'Monthly','Quarterly'=>'Quarterly','Yearly'=>'Yearly'], old('collection_schedule') ,['class'=>'form-control']) !!}
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>Client</label> 
-                                            {!! Form::select('client_id',$clients, old('client_id') ,['class'=>'form-control']) !!}
-                                        </div>
-
-                                        <!-- <div class="form-group">
-                                            <label>Supporting Documents</label>
-                                            <input type="file" name="supporting_documents" class="form-control">
-                                        </div> -->
 
                                         <div class="form-actions">
-                                            <button type="submit" class="btn btn-primary">Create</button>
+                                            <button type="submit" class="btn btn-primary">Save</button>
                                             <button type="button" class="btn btn-default" onclick="Cancel()">Cancel</button>
                                         </div>
+
                                      {!! Form::close() !!}
                                      
                                 </div>
@@ -94,7 +78,6 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-
             <link rel="stylesheet" href="{{ URL::asset('dist/css/jquery-ui-v1.11.2.css') }}">
             <script src="{{ URL::asset('dist/js/jquery-ui-v1.11.2.js') }}"></script>
 
@@ -102,12 +85,11 @@
 
               <script>
               $(function() {
-                $( "#datesigneddatepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
                 $( "#startdatepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
                 $( "#enddatepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
               });
                 function Cancel(){
-                    location.href="{{ route('contracts.index') }}"
+                    location.href="{{ route('users.index') }}"
                 }
 
                

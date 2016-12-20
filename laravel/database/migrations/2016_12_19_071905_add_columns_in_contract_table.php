@@ -30,7 +30,7 @@ class AddColumnsInContractTable extends Migration
     public function down()
     {
         Schema::table('contracts', function (Blueprint $table) {
-            //
+            $table->dropColumn(['amount','start_date','end_date','collection_schedule']);
         });
     }
 }

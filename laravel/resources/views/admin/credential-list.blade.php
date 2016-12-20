@@ -58,7 +58,7 @@
                                             <td>{{ $credential->password }}</td>
                                             <td>{{ $credential->link }}</td>                                            
                                             <td>                                                
-                                                <a class="btn btn-success" href="{{ route('credentials.show', $credential->id) }}">Show</a>
+                                                <a class="btn btn-success" href="{{ route('credentials.show', $credential->id) }}">View</a>
                                                 <a class="btn btn-primary" href="{{ route('credentials.edit', $credential->id) }}">Edit</a>   
                                                 {{ Form::open(['method'=>'DELETE','route'=>['credentials.destroy',$credential->id],'style'=>'display:inline;']) }}
                                                 {{ Form::submit('Delete',['class'=>'btn btn-danger del']) }}

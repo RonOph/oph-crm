@@ -18,5 +18,8 @@ Route::auth();
 Route::resource('clients','ClientController');
 Route::resource('contracts','ContractController');
 Route::resource('credentials','CredentialController');
+Route::resource('users','UserController');
+Route::resource('roles','RoleController');
+Route::resource('projects','ProjectController');
 
  

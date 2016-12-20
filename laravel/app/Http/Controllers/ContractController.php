@@ -108,6 +108,7 @@ class ContractController extends Controller
                 'Renewed'=>'Renewed',
                 'Expired'=>'Ended'
                 ];
+                
 
         $res = DB::table('clients')->orderBy('company_name','asc')->get();
         $clients = [];
@@ -116,7 +117,7 @@ class ContractController extends Controller
                 $clients[$client->id] = $client->company_name;
             }
         }
-        return view('admin.contract-edit',['types'=>$types,'clients'=>$clients,'contract'=>$contract]);
+        return view('admin.contract-edit',['status'=>$status,'clients'=>$clients,'contract'=>$contract]);
     }
 
     /**
@@ -130,10 +131,12 @@ class ContractController extends Controller
     {
 
         $this->validate($request,[
-            'client_id'=>'required',
             'name'=>'required',
-            'description'=>'required',
-            'status'=>'required'
+            'amount'=>'required',
+            'start_date'=>'required',
+            'end_date'=>'required',
+            'collection_schedule'=>'required',
+            'client_id'=>'required'
             ]);
 
         Contract::find($id)->update($request->all());

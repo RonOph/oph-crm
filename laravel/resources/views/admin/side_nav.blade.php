@@ -19,7 +19,7 @@
                 <a href="{{ route('clients.index') }}"><i class="fa fa-users"></i> Clients</a>
                 <ul class="nav nav-second-level collapse in">                     
                      <li><a href="{{ route('contracts.index') }}"><i class="fa fa-folder-open-o"></i> Contracts</a></li>
-                     <li><a href="{{ route('clients.index') }}"><i class="fa  fa-th-list"></i> Projects</a></li>
+                     <li><a href="{{ route('projects.index') }}"><i class="fa  fa-th-list"></i> Projects</a></li>
                      <li><a href="{{ route('clients.index') }}"><i class="fa fa-database"></i> Collections</a></li>
                      <li><a href="{{ route('credentials.index') }}"><i class="fa  fa-check "></i> Credentials</a></li>
                      
@@ -27,8 +27,8 @@
             </li>
             
 
-             <li><a href="{{ route('clients.index') }}"><i class="fa fa-user"></i> Users</a> </li> 
-              <li><a href="{{ route('clients.index') }}"><i class="fa fa-user-md"></i> User Roles</a>  </li> 
+             <li><a href="{{ route('users.index') }}"><i class="fa fa-user"></i> Users</a> </li> 
+              <li><a href="{{ route('roles.index') }}"><i class="fa fa-user-md"></i> Roles</a>  </li> 
              
             
         </ul>

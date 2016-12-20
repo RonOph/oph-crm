@@ -42,8 +42,8 @@
                                     <th class="text-center">Contract ID</th>
                                     <th>Client</th>
                                     <th>Name</th>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>                                   
+                                    <th>Date Signed</th>
+                                    <th>Start Date</th>                                   
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -55,10 +55,10 @@
                                             <td class="text-center">{{ $contract->official_contract_id }}</td>
                                             <td>{{ $contract->client->company_name }}</td>
                                             <td>{{ $contract->name }}</td>
-                                            <td>{{ $contract->start_date }}</td>
-                                            <td>{{ $contract->end_date }}</td>                                            
+                                            <td>{{ $contract->date_signed }}</td>
+                                            <td>{{ $contract->start_date }}</td>                                            
                                             <td>                                                
-                                                <a class="btn btn-success" href="{{ route('contracts.show', $contract->id) }}">Show</a>
+                                                <a class="btn btn-success" href="{{ route('contracts.show', $contract->id) }}">View</a>
                                                 <a class="btn btn-primary" href="{{ route('contracts.edit', $contract->id) }}">Edit</a>   
                                                 {{ Form::open(['method'=>'DELETE','route'=>['contracts.destroy',$contract->id],'style'=>'display:inline;']) }}
                                                 {{ Form::submit('Delete',['class'=>'btn btn-danger del']) }}
