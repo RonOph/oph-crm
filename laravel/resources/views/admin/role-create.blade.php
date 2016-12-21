@@ -38,7 +38,7 @@
 
                                         
                                         <div class="form-group">
-                                            <label>Name</label>
+                                            <label>Role</label>
 <!--                                             {!! Form::select('name',['Administrator'=>'Administrator','Assistant Administrator'=>'Assistant Administrator','Staff'=>'Staff'], old('name') ,['class'=>'form-control']) !!}
  -->
                                                 <input type="text" class="form-control" name="name" value="{{ old('name') }}">

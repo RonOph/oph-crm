@@ -28,7 +28,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Date Signed :</label>
-                                        {{ $contract->date_signed }} 
+                                        {{ date('F d, Y',strtotime($contract->date_signed)) }} 
                                     </div> 
 
 

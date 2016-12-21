@@ -24,7 +24,7 @@
                                     
  
                                         <div class="form-group">
-                                            <label>Name :</label>
+                                            <label>Role :</label>
                                             {{ $role->name }}
                                         </div>                
 

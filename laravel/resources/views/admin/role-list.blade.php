@@ -40,7 +40,7 @@
                             <thead>
                                 <tr> 
                                     <th class="text-center">Role ID</th>
-                                    <th>Name</th> 
+                                    <th>Role</th> 
                                     <th>Date Added</th>                                   
                                     <th>Action</th>
                                 </tr>
