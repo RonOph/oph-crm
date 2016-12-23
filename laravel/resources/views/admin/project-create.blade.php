@@ -13,7 +13,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Role
+                            Project
                         </div>
                         <div class="panel-body">
 
@@ -33,38 +33,43 @@
                                 <!-- /.col-lg-6 (nested) -->
                                 <div class="col-lg-6">
                                     
-                                     {!! Form::open(array('route' => 'roles.store','method'=>'POST')) !!}
+                                     {!! Form::open(array('route' => 'projects.store','method'=>'POST')) !!}
                                         
 
-                                        
                                         <div class="form-group">
-                                            <label>Name</label>
-<!--                                             {!! Form::select('name',['Administrator'=>'Administrator','Assistant Administrator'=>'Assistant Administrator','Staff'=>'Staff'], old('name') ,['class'=>'form-control']) !!}
- -->
-                                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
-                                            </div>                                         
-
-                                        <div class="form-group">
-                                            <label>Permissions</label>
-                                            <table class="table table-striped">
-                                                <tbody>
-
-                                            @foreach($roles as $role)
-                                                    <tr>
-                                                        <td>{{ $role }}</td>
-                                                        <td>
-                                                            <input type="checkbox" name="{{ $role }}[]" value="browse"> Browse
-                                                            <input type="checkbox" name="{{ $role }}[]" value="read"> Read
-                                                            <input type="checkbox" name="{{ $role }}[]" value="edit"> Edit
-                                                            <input type="checkbox" name="{{ $role }}[]" value="add"> Add
-                                                            <input type="checkbox" name="{{ $role }}[]" value="delete"> Delete
-                                                        </td>
-                                                    </tr>                                                    
-                                            @endforeach
-                                            </tbody>
-                                            </table>
+                                            <label>Contract ID</label>
+                                            {!! Form::select('contract_id',$contracts, old('contract_id') ,['class'=>'form-control']) !!}
                                         </div>
 
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                        </div>
+
+                                         <div class="form-group">
+                                            <label>Description</label>
+                                            <textarea class="form-control" rows="3" name="description">{{ old('description') }}</textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Category</label>
+                                            {!! Form::select('category',$categories, old('category') ,['class'=>'form-control']) !!}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Amount</label>
+                                                <input type="text" class="form-control" name="amount" value="{{ old('amount') }}">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Total Work Hour</label>
+                                                <input type="text" class="form-control" name="total_work_hour" value="{{ old('total_work_hour') }}">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Status</label>
+                                            {!! Form::select('status',$status, old('status') ,['class'=>'form-control']) !!}
+                                        </div>
                                        
                                         <div class="form-actions">
                                             <button type="submit" class="btn btn-primary">Create</button>
@@ -95,7 +100,7 @@
                 $( "#enddatepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
               });
                 function Cancel(){
-                    location.href="{{ route('roles.index') }}"
+                    location.href="{{ route('projects.index') }}"
                 }
 
                

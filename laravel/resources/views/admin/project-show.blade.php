@@ -21,38 +21,48 @@
                                 
                                 <!-- /.col-lg-6 (nested) -->
                                 <div class="col-lg-6">
-                                    
- 
-                                        <div class="form-group">
-                                            <label>Name :</label>
-                                            {{ $role->name }}
-                                        </div>                
 
-                                        <div class="form-group">
-                                            <label></label>
-                                            <table class="table table-striped">
-                                                <tr>
-                                                    <th>Menu</th>
-                                                    <th>Permissions</th>
-                                                </tr>
-                                                <tbody>
-                                            <?php $permissions = (array)json_decode($role->permissions); ?>
-                                            @foreach($roles as $r)
-                                                    <tr>
-                                                        <td>{{ $r }}</td>
-                                                        <td><?php $current_per = isset($permissions[$r]) ? $permissions[$r] : []; ?>
-                                                            <?=in_array('browse', $current_per) ? '<i class="fa fa-check-square-o"> </i> Browse' : '' ?>
-                                                            <?=in_array('read', $current_per) ? '<i class="fa fa-check-square-o"> </i> Read' : '' ?>
-                                                            <?=in_array('edit', $current_per) ? '<i class="fa fa-check-square-o"> </i> Edit' : '' ?>
-                                                            <?=in_array('add', $current_per) ? '<i class="fa fa-check-square-o "></i> Add' : '' ?>
-                                                            <?=in_array('delete', $current_per) ? '<i class="fa fa-check-square-o"> </i> Delete' : '' ?>
-                                                        </td>
-                                                    </tr>                                                    
-                                            @endforeach
-                                            </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="form-actions"> 
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <th>Project ID</th>
+                                            <td> {{ $project->official_project_id }}</td>
+                                        </tr>
+                                            <th>Contract ID</th>
+                                            <td>{{ $project->contract->official_contract_id }}</td>
+                                        </tr>
+
+                                            <th>Name</th>
+                                            <td>{{ $project->contract->name }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Description</th>
+                                            <td>{{ $project->description }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Category</th>
+                                            <td>{{ $project->category }}</td>
+                                        </tr> 
+                                        <tr>
+                                            <th>Amount</th>
+                                            <td>{{ $project->amount }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Total Work Hour</th>
+                                            <td>{{ $project->total_work_hour }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Status</th> 
+                                            <td>{{ $project->status }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                                
+
+                                    
+                                        
+
+                                        <div class="row"> 
                                             <button type="button" class="btn btn-default" onclick="Cancel()">Back</button>
                                         </div> 
                                      
@@ -66,19 +76,10 @@
                     <!-- /.panel -->
                 </div>
                 <!-- /.col-lg-12 -->
-            </div>
-            <link rel="stylesheet" href="{{ URL::asset('dist/css/jquery-ui-v1.11.2.css') }}">
-            <script src="{{ URL::asset('dist/js/jquery-ui-v1.11.2.js') }}"></script>
-
-            <script src="{{ URL::asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script> 
-
-              <script>
-              $(function() {
-                $( "#startdatepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
-                $( "#enddatepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
-              });
+            </div> 
+              <script> 
                 function Cancel(){
-                    location.href="{{ route('roles.index') }}"
+                    location.href="{{ route('projects.index') }}"
                 }
 
                

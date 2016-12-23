@@ -13,52 +13,60 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Credential
+                            Contract View
                         </div>
                         <div class="panel-body"> 
             
                             <div class="row">
                                 
                                 <!-- /.col-lg-6 (nested) -->
-                                <div class="col-lg-6">                                    
- 
-                                    <div class="form-group">
-                                        <label>Name :</label>
-                                        {{ $contract->name }} 
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Date Signed :</label>
-                                        {{ date('F d, Y',strtotime($contract->date_signed)) }} 
-                                    </div> 
+                                <div class="col-lg-6">
 
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <th>Contract ID</th>
+                                                <td>{{ $contract->official_contract_id }}</td>
+                                            </tr>
 
-                                    <div class="form-group">
-                                        <label>Start Date :</label> 
-                                        {{ date('F d, Y',strtotime($contract->start_date)) }}
-                                    </div>
+                                            <tr>
+                                                <th>Name</th>
+                                                <td>{{ $contract->name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Date Signed</th>
+                                                <td>{{ date('F d, Y',strtotime($contract->date_signed))}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Start Date</th>
+                                                <td>{{ date('F d, Y',strtotime($contract->start_date)) }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>End Date</th>
+                                                <td>{{ date('F d, Y',strtotime($contract->end_date)) }}</td>
+                                            </tr>
 
-                                    <div class="form-group">
-                                        <label>End Date :</label> 
-                                        {{ date('F d, Y',strtotime($contract->end_date)) }}
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Total Amount :</label>
-                                        {{ number_format($contract->amount,2) }} 
-                                    </div>
+                                            <tr>
+                                                <th>Total Amount</th>
+                                                <td>{{ number_format($contract->amount,2) }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Collection Schedule</th>
+                                                <td>{{ $contract->collection_schedule }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Client's Company Name</th>
+                                                <td>{{ $contract->client->company_name }}</td>
+                                            </tr> 
+                                            
 
-                                    <div class="form-group">
-                                        <label>Collection Schedule :</label> 
-                                        {{ $contract->collection_schedule }}
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Client :</label> 
-                                        {{ $contract->client->company_name }}
-                                    </div>                                      
-
-                                    <div class="form-actions">
-                                        <button type="button" class="btn btn-default" onclick="Cancel()">Back</button>
-                                    </div>
+                                        </tbody>
+                                    </table> 
+                                    <table>
+                                        <tr>
+                                            <td><button type="button" class="btn btn-default" onclick="Cancel()">Back</button></td>
+                                        </tr>
+                                    </table>     
                                       
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->

@@ -48,7 +48,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(count($contracts) > 0)
+                                @if(count($contracts))
                                
                                     @foreach($contracts as $key => $contract)
                                         <tr>

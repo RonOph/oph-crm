@@ -5,6 +5,6 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="">OPH Customer Relatioships Management - Version 1.0</a>
+    <a class="navbar-brand" href="">OPH - Version 1.0</a>
 </div>
 <!-- /.navbar-header -->

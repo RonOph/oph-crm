@@ -49,16 +49,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(count($projects) > 0)
+                                @if(count($projects))
                                
                                     @foreach($projects as $key => $project)
                                         <tr>
-                                            <th class="text-center">Project ID</th>
-                                            <th class="text-center">Contract ID</th>
-                                            <th>Name</th>                                   
-                                            <th>Category</th>
-                                            <th>Amount</th>
-                                            <th>Status</th>                                            
+                                            <td class="text-center">{{ $project->official_project_id }}</td>
+                                            <td class="text-center">{{ $project->contract->official_contract_id }}</td>
+                                            <td>{{ $project->name }}</td>                                   
+                                            <td>{{ $project->category }}</td>
+                                            <td>{{ $project->amount }}</td>
+                                            <td>{{ $project->status }}</td>                                            
                                             <td>                                                
                                                 <a class="btn btn-success" href="{{ route('projects.show', $project->id) }}">View</a>
                                                 <a class="btn btn-primary" href="{{ route('projects.edit', $project->id) }}">Edit</a>   

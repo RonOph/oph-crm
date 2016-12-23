@@ -14,7 +14,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Client Personal Information
+                            Client View
                         </div>
                         <div class="panel-body">
  
@@ -23,48 +23,51 @@
                                 
                                 <!-- /.col-lg-6 (nested) -->
                                 <div class="col-lg-6">
-                                        
-                                        <div class="form-group">
-                                            <img src="{{ asset('images/'.$client->logo) }}">
-                                        </div>
 
-                                        <div class="form-group">
-                                            <label>Company Name :</label>
-                                             {{ $client->company_name }}
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Owner Name :</label>
-                                             {{ $client->owner_name }}
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Email :</label>
-                                              {{ $client->email }}
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>Mobile No. :</label>
-                                              {{ $client->mobile_number }}
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Telephone No. :</label>
-                                              {{ $client->telephone_number }}
-                                        </div> 
-
-                                        <div class="form-group">
-                                            <label>Website :</label>
-                                              {{ $client->website_url }}
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Status :</label>
-                                              {{ ucwords($client->status) }}
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Note :</label>
-                                              {{ $client->note }}
-                                        </div>
-                                        <div class="form-actions">
-                                             <button type="button" class="btn btn-default" onclick="Cancel()">Back</button>
-                                        </div>
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                            <tr> 
+                                                <td colspan="2" class="text-center"> <img src="{{ asset('images/'.$client->logo) }}"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Company Name</th>
+                                                <td>{{ $client->company_name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Owner Name</th>
+                                                <td>{{ $client->owner_name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Email</th>
+                                                <td>{{ $client->email }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Mobile No.</th>
+                                                <td>{{ $client->mobile_number }}/td>
+                                            </tr> 
+                                            <tr>
+                                                <th>Telephone No.</th>
+                                                <td>{{ $client->telephone_number }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Website</th>
+                                                <td>{{ $client->website_url }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Status</th> 
+                                                <td>{{ ucwords($client->status) }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Note</th> 
+                                                <td>{{ $client->note }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table> 
+                                    <table>
+                                        <tr>
+                                            <td><button type="button" class="btn btn-default" onclick="Cancel()">Back</button></td>
+                                        </tr>
+                                    </table>
                                       
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->

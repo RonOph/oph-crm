@@ -13,7 +13,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Role
+                            Project
                         </div>
                         <div class="panel-body">
 
@@ -33,37 +33,41 @@
                                 <!-- /.col-lg-6 (nested) -->
                                 <div class="col-lg-6">
                                     
-                                     {!! Form::model($role, ['method'=>'PATCH','route'=>['roles.update',$role->id]] ) !!}                                     
+                                     {!! Form::model($project, ['method'=>'PATCH','route'=>['projects.update',$project->id]] ) !!}                                     
+
+                                        <div class="form-group">
+                                            <label>Contract ID</label>
+                                            {!! Form::select('contract_id',$contracts, $project->contract_id ,['class'=>'form-control']) !!}
+                                        </div>
 
                                         <div class="form-group">
                                             <label>Name</label>
-<!--                                             {!! Form::select('name',['Administrator'=>'Administrator','Assistant Administrator'=>'Assistant Administrator','Staff'=>'Staff'], $role->name ,['class'=>'form-control']) !!}-->
-                                            <input type="text" class="form-control" name="name" value="{{ $role->name }}">
-                                        </div>                
+                                                <input type="text" class="form-control" name="name" value="{{ $project->name }}">
+                                        </div>
+
+                                         <div class="form-group">
+                                            <label>Description</label>
+                                            <textarea class="form-control" rows="3" name="description">{{ $project->description }}</textarea>
+                                        </div>
 
                                         <div class="form-group">
-                                            <label></label>
-                                            <table class="table table-striped">
-                                                <tr>
-                                                    <th>Menu</th>
-                                                    <th>Permissions</th>
-                                                </tr>
-                                                <tbody>
-                                            <?php $permissions = (array)json_decode($role->permissions); ?>
-                                            @foreach($roles as $r)
-                                                    <tr>
-                                                        <td>{{ $r }}</td>
-                                                        <td><?php $current_per = isset($permissions[$r]) ? $permissions[$r] : []; ?>
-                                                            <input type="checkbox" <?=in_array('browse', $current_per) ? 'checked' : '' ?> name="{{ $r }}[]" value="browse"> Browse
-                                                            <input type="checkbox" <?=in_array('read', $current_per) ? 'checked' : '' ?> name="{{ $r }}[]" value="read"> Read
-                                                            <input type="checkbox" <?=in_array('edit', $current_per) ? 'checked' : '' ?> name="{{ $r }}[]" value="edit"> Edit
-                                                            <input type="checkbox" <?=in_array('add', $current_per) ? 'checked' : '' ?> name="{{ $r }}[]" value="add"> Add
-                                                            <input type="checkbox" <?=in_array('delete', $current_per) ? 'checked' : '' ?> name="{{ $r }}[]" value="delete"> Delete
-                                                        </td>
-                                                    </tr>                                                    
-                                            @endforeach
-                                            </tbody>
-                                            </table>
+                                            <label>Category</label>
+                                            {!! Form::select('category',$categories, $project->category ,['class'=>'form-control']) !!}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Amount</label>
+                                                <input type="text" class="form-control" name="amount" value="{{ $project->amount }}">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Total Work Hour</label>
+                                                <input type="text" class="form-control" name="total_work_hour" value="{{ $project->total_work_hour }}">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Status</label>
+                                            {!! Form::select('status',$status, $project->status ,['class'=>'form-control']) !!}
                                         </div>
 
 
@@ -84,19 +88,12 @@
                     <!-- /.panel -->
                 </div>
                 <!-- /.col-lg-12 -->
-            </div>
-            <link rel="stylesheet" href="{{ URL::asset('dist/css/jquery-ui-v1.11.2.css') }}">
-            <script src="{{ URL::asset('dist/js/jquery-ui-v1.11.2.js') }}"></script>
-
-            <script src="{{ URL::asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script> 
+            </div> 
 
               <script>
-              $(function() {
-                $( "#startdatepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
-                $( "#enddatepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
-              });
+              
                 function Cancel(){
-                    location.href="{{ route('roles.index') }}"
+                    location.href="{{ route('projects.index') }}"
                 }
 
                
