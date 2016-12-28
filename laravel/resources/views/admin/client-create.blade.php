@@ -72,7 +72,6 @@
                                             <label>Contract Status</label>
                                              {!! Form::select('status',[''=>'','pending'=>'Pending','active'=>'Active','inactive'=>'Inactive'], old('status') ,['class'=>'form-control']) !!}
 
-
                                         </div>
 
                                         <div class="form-group">
