@@ -80,16 +80,6 @@
                                             <textarea class="form-control" rows="3" name="note">{{ old('note') }}</textarea>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label>Note 2</label>
-                                            <textarea class="form-control" rows="3" name="note">{{ old('note') }}</textarea>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>Note 3</label>
-                                            <textarea class="form-control" rows="3" name="note">{{ old('note') }}</textarea>
-                                        </div>
-
                                         <div class="form-actions">
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                             <button type="button" class="btn btn-default" onclick="Cancel()">Cancel</button>

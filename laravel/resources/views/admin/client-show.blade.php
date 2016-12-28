@@ -43,7 +43,7 @@
                                             </tr>
                                             <tr>
                                                 <th>Mobile No.</th>
-                                                <td>{{ $client->mobile_number }}/td>
+                                                <td>{{ $client->mobile_number }}</td>
                                             </tr> 
                                             <tr>
                                                 <th>Telephone No.</th>
